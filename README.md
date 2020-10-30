@@ -17,12 +17,12 @@ Rails 5.2.4.3
 -------
 
 We will be using:
-1. The NREL API:
-Alternate fuel station - nearest station endpoint: https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/nearest/
+1. The NREL API: <br>
+Alternate fuel station - nearest station endpoint: https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/nearest/ <br>
 Sign up for a key here: https://developer.nrel.gov/signup/
 2. The MapQuest Directions API:
-endpoint: http://www.mapquestapi.com/directions/v2/route
-Sign up for a key here: https://developer.mapquest.com/
+endpoint: http://www.mapquestapi.com/directions/v2/route <br>
+Sign up for a key here: https://developer.mapquest.com/ <br>
 We will be searching for the nearest electric charging station to Turing.
 ```
 As a user
