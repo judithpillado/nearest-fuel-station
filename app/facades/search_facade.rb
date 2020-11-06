@@ -2,14 +2,12 @@ class SearchFacade
   def self.fuel_station_search(location)
     nrel_data = FuelService.closest_fuel_station(location)
     station_attr = nrel_data[:fuel_stations][0]
-
-    conn = Faraday.new('http://www.mapquestapi.com')
-    result = conn.get('/directions/v2/route') do |req|
-      req.params['key'] = ENV['MAPQUEST_API']
-      req.params['from'] = "#{nrel_data[:latitude]},#{nrel_data[:longitude]}"
-      req.params['to'] = "#{station_attr[:latitude]},#{station_attr[:longitude]}"
-    end
-    mapquest_data = JSON.parse(result.body, symbolize_names: true)[:route]
+    mapquest_data = MapquestService.driving_directions(
+      nrel_data[:latitude],
+      nrel_data[:longitude],
+      station_attr[:latitude],
+      station_attr[:longitude]
+    )
     dirs = []
     mapquest_data[:legs][0][:maneuvers].each do |maneuver|
       dirs << maneuver[:narrative]
