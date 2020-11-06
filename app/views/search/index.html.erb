@@ -1,21 +1,18 @@
 <h1>Closest Electric Fuel Station to You</h1>
 
-<%= "Name: #{@station[:station_name]}" %>
+<%= "Name: #{@station.name}" %> <br />
 
-<p>Address: <%= @station[:street_address] %>,
-  <%= @station[:city] %>,
-  <%= @station[:state] %>,
-  <%= @station[:zip] %> </p>
+<%= "Address: #{@station.address}" %> <br />
 
-<%= "Fuel Type: #{@station[:fuel_type_code]}" %> <br />
+<%= "Fuel Type: #{@station.fuel_type_code}" %> <br />
 
-<%= "Access Times: #{@station[:access_days_time]}" %> <br />
+<%= "Access Times: #{@station.access_days_time}" %> <br />
 
-<%= "Distance of Nearest Station: #{@directions[:distance]} miles" %> <br />
+<%= "Distance of Nearest Station: #{@station.distance} miles" %> <br />
 
-<%= "Travel Time: #{@directions[:travel_time]}" %> <br />
+<%= "Travel Time: #{@station.travel_time}" %> <br />
 <p>Direction Instructions: </p>
-<% @directions[:directions].each do |narrative| %>
+<% @station.directions.each do |narrative| %>
 <ul>
   <li><%= narrative %></li>
 </ul>
