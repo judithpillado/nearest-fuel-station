@@ -1,14 +1,6 @@
 class SearchFacade
   def self.fuel_station_search(location)
-
-    conn = Faraday.new('https://developer.nrel.gov')
-    result = conn.get('/api/alt-fuel-stations/v1/nearest.json') do |req|
-      req.params['location'] = location
-      req.params['fuel_type'] = 'ELEC'
-      req.params['limit'] = 1
-      req.params['api_key'] = ENV['NREL_API']
-    end
-    nrel_data = JSON.parse(result.body, symbolize_names: true)
+    nrel_data = FuelService.closest_fuel_station(location)
     station_attr = nrel_data[:fuel_stations][0]
 
     conn = Faraday.new('http://www.mapquestapi.com')
